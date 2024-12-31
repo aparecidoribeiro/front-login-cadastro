@@ -1,0 +1,383 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    --white: #fff;
+    --black: #000;
+    --black-two: #202020;
+    --blue: #0056FB;
+    --blue-two: #1b68f8;
+    --green: #73ec7d;
+    --green-border: #46d151;
+    --red: #ec7373;
+    --red-border: #d14646;
+
+    overflow-x: hidden;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.column {
+    flex-grow: 1;
+    width: 50%;
+}
+
+
+.left {
+    display: flex;
+    justify-content: center;
+}
+
+.left-info {
+    display: flex;
+    width: 80%;
+    max-width: 444px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    z-index: 9;
+}
+
+.form-login::before {
+    content: '';
+    position: relative;
+    background-image: url('assets/code.svg');
+    background-repeat: no-repeat;
+    background-size: 90px;
+    width: 90px;
+    height: 90px;
+    z-index: 1;
+    opacity: 0.5;
+    align-self: flex-end;
+    right: -30px;
+    top: 360px;
+}
+
+.form-cadastro::before {
+    content: '';
+    position: relative;
+    background-image: url('assets/code.svg');
+    background-repeat: no-repeat;
+    background-size: 90px;
+    width: 90px;
+    height: 90px;
+    z-index: 1;
+    opacity: 0.5;
+    align-self: flex-end;
+    right: -30px;
+    top: 465px;
+}
+
+.left-info h1 {
+    font-size: 42px;
+    color: var(--black);
+    font-weight: bold;
+    align-self: flex-start;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 444px;
+    height: 49px;
+    padding: 15px 19px;
+    border-radius: 4px;
+    border: 1px solid var(--black-two);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+    outline: 0;
+}
+
+.left-info>input::placeholder {
+    color: var(--black-two);
+    font-size: 14px;
+}
+
+.infor-termos {
+    align-self: flex-start;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.infor-termos input,
+.infor-termos label {
+    cursor: pointer;
+}
+
+.infor-termos label {
+    font-size: 14px;
+}
+
+.left-info input[type="submit"] {
+    width: 100%;
+    height: 49px;
+    background-color: var(--blue);
+    border: none;
+    font-size: 18px;
+    color: var(--white);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.left-info input[type="submit"]:hover {
+    background-color: var(--blue-two);
+}
+
+.info-conta {
+    font-size: 15px;
+    align-self: flex-start;
+    font-weight: bold;
+    color: var(--black);
+    user-select: none;
+}
+
+.info-conta a {
+    font-weight: 200;
+    text-decoration: none;
+    color: var(--black);
+}
+
+.right {
+    background-color: var(--blue);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-info {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+}
+
+
+.right-info img {
+    max-width: 400px;
+    width: 100%;
+}
+
+.info-text h2 {
+    font-size: 42px;
+    color: var(--white);
+    max-width: 400px;
+    font-weight: bold;
+}
+
+.info-text p {
+    font-size: 16px;
+    color: var(--white);
+    font-weight: 400;
+    margin-top: 20px;
+    line-height: 26px;
+}
+
+
+/*Estilo da div de notificação*/
+.notification {
+    position: absolute;
+    width: auto;
+    max-width: 290px;
+    max-height: 90px;
+    padding: 20px 10px;
+    top: 40px;
+    right: 0;
+    font-size: 15px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    transition: animation 2s;
+    border-radius: 4px;
+    line-height: 18px;
+}
+
+.alert-icon {
+    font-size: 30px;
+}
+
+.show-alert {
+    animation: show-notificacao 1s ease forwards;
+}
+
+.hide-alert {
+    animation: hide-notificacao 1s ease forwards;
+}
+
+
+.notification-green {
+    background-color: var(--green);
+    border-left: 8px solid var(--green-border);
+}
+
+.notification-red {
+    background-color: var(--red);
+    border-left: 8px solid var(--red-border);
+}
+
+@keyframes show-notificacao {
+    0% {
+        transform: translateX(100%);
+    }
+
+    40% {
+        transform: translateX(-10%);
+    }
+
+    100% {
+        transform: translateX(-5%);
+    }
+
+}
+
+@keyframes hide-notificacao {
+    0% {
+        transform: translateX(-5%);
+    }
+
+    40% {
+        transform: translateX(-10%);
+    }
+
+
+    100% {
+        transform: translateX(100%);
+    }
+
+}
+
+
+/* Ver senha */
+
+.hide-senha {
+    align-self: flex-end;
+    position: relative;
+    top: -55px;
+    right: 20px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+[data-icon] {
+    font-size: 23px;
+}
+
+#login,
+#cadastrar {
+    z-index: 2;
+}
+
+#login,
+.infor-termos {
+    margin-top: -20px;
+}
+
+/*Responsividade*/
+
+@media (max-width: 1150px) {
+    main {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .column {
+        width: 100%;
+    }
+
+    .left {
+        height: 100vh;
+        width: 100%;
+        align-items: center;
+    }
+
+    .left-info {
+        width: 100%;
+    }
+
+    .right {
+        width: 100%s;
+    }
+}
+
+@media (max-width: 550px) {
+    .column {
+        padding: 0 20px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+        width: 100%;
+    }
+
+    [data-icon] {
+        font-size: 20px;
+    }
+
+    .form-login::before {
+        background-size: 70px;
+        width: 70px;
+        height: 70px;
+        right: -10px;
+        top: 355px;
+    }
+
+    .form-cadastro::before {
+        background-size: 70px;
+        width: 70px;
+        height: 70px;
+        right: -10px;
+        top: 460px;
+    }
+}
+
+@media (max-width: 370px) {
+    .form-login::before {
+        background-size: 70px;
+        width: 70px;
+        height: 70px;
+        right: -10px;
+        top: 350px;
+    }
+
+    .form-cadastro::before {
+        background-size: 70px;
+        width: 70px;
+        height: 70px;
+        right: -10px;
+        top: 455px;
+    }
+
+    .right-info img {
+        width: 85%;
+    }
+
+    .right-info h2 {
+        font-size: 32px;
+    }
+
+}
