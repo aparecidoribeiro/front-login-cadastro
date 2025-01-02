@@ -14,26 +14,33 @@ formCadastro.addEventListener('submit', (e) => {
 
     buttonCadastrar.disabled = true
 
-    let nome = formCadastro.nome.value
-    let email = formCadastro.email.value
-    let senha = formCadastro.senha.value
+    let nome = formCadastro.nome
+    let email = formCadastro.email
+    let senha = formCadastro.senha
 
-    if (validarEmail(email) == false) {
+    if (validarEmail(email.value) == false) {
         notificacao("Seu email não atende o formato correto.", "red")
     }
-    else if (validarSenha(senha) == false) {
+    else if (validarSenha(senha.value) == false) {
         notificacao("Sua senha precisa ter no mínimo 8 caracteres: 1 caractere especial, 1 letra minúscula e 1 letra maiúscula.", "red")
     }
     else {
         const dados = {
-            "nome": nome,
-            "email": email,
-            "senha": senha
+            "nome": nome.value,
+            "email": email.value,
+            "senha": senha.value
         }
         verificarUsuario(dados)
+        zerarInputs(nome, email, senha)
     }
 
 })
+
+function zerarInputs(nome, email, senha) {
+    nome.value = ''
+    email.value = ''
+    senha.value = ''
+}
 
 
 function verificarUsuario(dados) {
@@ -110,11 +117,11 @@ buttonSenha.addEventListener('click', (e) => {
 /* Validações */
 
 function validarEmail(email) {
-    const emailRegex = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-z]+\.[a-z]{2,}$/
     return emailRegex.test(email)
 }
 
 function validarSenha(senha) {
-    const senhaRegex = /^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{8,15}$/;
+    const senhaRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[.!@?_-]).{8,}$/;
     return senhaRegex.test(senha)
 }

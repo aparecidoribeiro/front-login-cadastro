@@ -80,8 +80,6 @@ function notificacao(texto, cor) {
 buttonSenha.addEventListener('click', (e) => {
     const nomeClass = e.target.classList[1]
 
-    console.log(e.target.classList)
-
     switch (nomeClass) {
         case "fa-eye":
             e.target.classList.remove('fa-eye')
